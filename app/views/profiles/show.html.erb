@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @profile.color %>
+</p>
+
+<p>
+  <strong>Theme:</strong>
+  <%= @profile.theme %>
+</p>
+
+<p>
+  <strong>Quote:</strong>
+  <%= @profile.quote %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>

@@ -28,7 +28,6 @@ class SessionsController < ApplicationController
   # POST /sessions
   def create
     @user = User.find_by(email: session_params["email"])
-    
     if @user
       login!
       render json: {
@@ -69,7 +68,6 @@ end
 
   # DELETE /sessions/1
   def destroy
-    binding.pry
     @session.clear
   end
 
