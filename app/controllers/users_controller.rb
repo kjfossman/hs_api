@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   def index  
     @users = User.all
 
-    render json: @users
+    render json: @users, include: {profile: {only: [:theme, :color, :quote]}} 
+    # include: {profile: {only: [:theme]}} 
   end
 
   # GET /users/1

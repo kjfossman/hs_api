@@ -33,7 +33,9 @@ class SessionsController < ApplicationController
       render json: {
           status: :created, 
           logged_in: true, 
-          user: @user
+          user: @user,
+          profile: @user.profile
+          
       }
       # render json: @session, status: :created, location: @session
     else
