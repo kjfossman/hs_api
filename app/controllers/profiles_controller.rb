@@ -19,6 +19,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+
   end
 
   # POST /profiles
@@ -35,9 +36,9 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   def update
     if @profile.update(profile_params)
-      redirect_to @profile, notice: 'Profile was successfully updated.'
+      render json: @profile
     else
-      render :edit
+      render json: @profile.errors, status: :unprocessable_entity
     end
   end
 
