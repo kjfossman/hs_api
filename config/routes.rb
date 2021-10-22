@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :routines
+  resources :workouts
+  resources :exercises
   resources :profiles
   # resources :sessions
   resources :users

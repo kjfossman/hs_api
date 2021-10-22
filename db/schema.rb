@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_04_193325) do
+ActiveRecord::Schema.define(version: 2021_10_22_214219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "name"
+    t.string "equipment"
+    t.string "target"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "color"
@@ -22,6 +30,18 @@ ActiveRecord::Schema.define(version: 2021_10_04_193325) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+  end
+
+  create_table "routines", force: :cascade do |t|
+    t.integer "sets"
+    t.string "reps"
+    t.string "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "workout_id", null: false
+    t.bigint "exercise_id", null: false
+    t.index ["exercise_id"], name: "index_routines_on_exercise_id"
+    t.index ["workout_id"], name: "index_routines_on_workout_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -37,4 +57,14 @@ ActiveRecord::Schema.define(version: 2021_10_04_193325) do
     t.string "imageUrl"
   end
 
+  create_table "workouts", force: :cascade do |t|
+    t.string "name"
+    t.string "time"
+    t.integer "difficulty"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "routines", "exercises"
+  add_foreign_key "routines", "workouts"
 end

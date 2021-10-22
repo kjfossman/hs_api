@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sets:</strong>
+  <%= @routine.sets %>
+</p>
+
+<p>
+  <strong>Reps:</strong>
+  <%= @routine.reps %>
+</p>
+
+<%= link_to 'Edit', edit_routine_path(@routine) %> |
+<%= link_to 'Back', routines_path %>
